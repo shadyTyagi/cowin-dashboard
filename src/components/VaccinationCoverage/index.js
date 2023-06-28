@@ -1,8 +1,9 @@
 // Write your code here
 import {BarChart, Bar, XAxis, YAxis, Legend} from 'recharts'
+import './index.css'
 
 const VaccinationCoverage = props => {
-  const DataFormatter = number => {
+  const dataFormatter = number => {
     if (number > 1000) {
       return `${(number / 1000).toString()}k`
     }
@@ -33,7 +34,7 @@ const VaccinationCoverage = props => {
           }}
         />
         <YAxis
-          tickFormatter={DataFormatter}
+          tickFormatter={dataFormatter}
           tick={{
             stroke: '#6c757d',
             strokeWidth: 0,

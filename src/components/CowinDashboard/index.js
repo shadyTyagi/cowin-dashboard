@@ -22,7 +22,7 @@ class CowinDashboard extends Component {
   }
 
   getVaccinationData = async () => {
-    this.setState = {apiStatus: apiStatusConstants.inProcess}
+    this.setState({apiStatus: apiStatusConstants.inProcess})
     const response = await fetch('https://apis.ccbp.in/covid-vaccination-data')
     console.log(response)
     if (response.ok === true) {
@@ -32,7 +32,7 @@ class CowinDashboard extends Component {
         last7DaysVaccination: data.last_7_days_vaccination.map(eachData => ({
           vaccineDate: eachData.vaccine_date,
           dose1: eachData.dose_1,
-          dose2: eachData.dost_2,
+          dose2: eachData.dose_2,
         })),
 
         vaccinationByAge: data.vaccination_by_age.map(eachAgeData => ({
@@ -45,12 +45,12 @@ class CowinDashboard extends Component {
           gender: eachGenderData.gender,
         })),
       }
-      this.setState = {
+      this.setState({
         vaccinationData: updatedData,
         apiStatus: apiStatusConstants.success,
-      }
+      })
     } else {
-      this.setState = {apiStatus: apiStatusConstants.failure}
+      this.setState({apiStatus: apiStatusConstants.failure})
     }
   }
 
